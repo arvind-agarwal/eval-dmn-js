@@ -1,6 +1,6 @@
 const index = require("../src/index");
 
-const { feel } = require('js-feel')();
+const { feel } = require('eval-feel')();
 
 const rule1 = 'a + b - c';
 const rule2 = "every x in d satisfies x.i = 10";
@@ -107,6 +107,44 @@ test('period', async () => {
   const result = await parsedGrammar.build(context);
   expect(result).toStrictEqual(true);
 });
+
+test('period with js date', async () => {
+  const rule = 'dt in [referenceDate .. referenceDate1]';
+  // const rule = 'now()';
+  const parsedGrammar = feel.parse(rule);
+  const context = {
+    dt: new Date("2017-04-12T12:50:00Z"),
+    referenceDate: new Date("2017-04-12T12:45:00Z"),
+    referenceDate1: new Date("2017-04-12T12:55:00Z"),
+  };
+  const result = await parsedGrammar.build(context);
+  expect(result).toStrictEqual(true);
+});
+
+async function evaluateRule(context, rule) {
+  const parsedGrammar = feel.parse(rule);
+  const result = await parsedGrammar.build(context);
+  return result;
+}
+
+test('date comparison', async () => {
+  const context = {
+    dt: new Date("2017-04-12T12:50:00Z"),
+    referenceDate: new Date("2017-04-12T12:45:00Z"),
+    referenceDate1: new Date("2017-04-12T12:55:00Z"),
+  };
+
+  const rule = 'dt > referenceDate';
+  // const rule = 'now()';
+  expect(await evaluateRule(context, 'now()')).toBe(false);
+  expect(await evaluateRule(context, 'dt > referenceDate')).toBe(true);
+  expect(await evaluateRule(context, 'dt >= referenceDate')).toBe(true);
+  expect(await evaluateRule(context, 'dt = referenceDate')).toBe(false);
+  expect(await evaluateRule(context, 'dt < referenceDate')).toBe(false);
+  expect(await evaluateRule(context, 'dt <= referenceDate')).toBe(false);
+  
+});
+
 
 test('date conversion', async () => {
   const rule = 'date and time("2017-04-12T12:50:00Z")';

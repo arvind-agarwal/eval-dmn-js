@@ -18,4 +18,6 @@ const formatTime = obj => moment(obj).format(time_ISO_8601);
 
 const format = (obj, fmt) => obj.format(fmt);
 
-module.exports = { setTimezone, formatDateTime, formatDate, formatTime, format };
+const now = () => moment().format();
+
+module.exports = { setTimezone, formatDateTime, formatDate, formatTime, format, now };

@@ -51,6 +51,8 @@ const operatorMap = {
           return Big(x).lt(y);
         } else if (typeof x === 'string' && typeof y === 'string') {
           return x < y;
+        } else if (x instanceof Date && y instanceof Date) {
+          return x < y;
         } else if (x.isDate && y.isDate) {
           const checkLt = checkInequality('<'); // eslint-disable-line no-use-before-define
           return checkLt(x, y, dateTimeComponent.date);
@@ -80,6 +82,8 @@ const operatorMap = {
         if (typeof x === 'number' && typeof y === 'number') {
           return Big(x).lte(y);
         } else if (typeof x === 'string' && typeof y === 'string') {
+          return x <= y;
+        } else if (x instanceof Date && y instanceof Date) {
           return x <= y;
         } else if (x.isDate && y.isDate) {
           const checkLtEq = checkInequality('<='); // eslint-disable-line no-use-before-define
@@ -111,6 +115,8 @@ const operatorMap = {
           return Big(x).gt(y);
         } else if (typeof x === 'string' && typeof y === 'string') {
           return x > y;
+        } else if (x instanceof Date && y instanceof Date) {
+          return x > y;
         } else if (x.isDate && y.isDate) {
           const checkGt = checkInequality('>'); // eslint-disable-line no-use-before-define
           return checkGt(x, y, dateTimeComponent.date);
@@ -140,6 +146,8 @@ const operatorMap = {
         if (typeof x === 'number' && typeof y === 'number') {
           return Big(x).gte(y);
         } else if (typeof x === 'string' && typeof y === 'string') {
+          return x >= y;
+        } else if (x instanceof Date && y instanceof Date) {
           return x >= y;
         } else if (x.isDate && y.isDate) {
           const checkGtEq = checkInequality('>='); // eslint-disable-line no-use-before-define
@@ -174,6 +182,8 @@ const operatorMap = {
         return Big(x).eq(y);
       } else if (typeof x === 'string' && typeof y === 'string') {
         return x === y;
+      } else if (x instanceof Date && y instanceof Date) {
+        return x.getTime() === y.getTime();
       } else if (typeof x === 'boolean' && typeof y === 'boolean') {
         return x === y;
       } else if (x.isDate && y.isDate) {

@@ -47,18 +47,18 @@ gulp.task('concat:feel', () => gulp.src(['./temp/feel-initializer.js', './gramma
   .pipe(gulp.dest('./src/')));
 
 // gulp.task('clean:temp', ['initialize:feel', 'concat:feel']
-gulp.task('clean:temp', () => gulp.src('./temp', {read: false})
+gulp.task('clean:temp', () => gulp.src('./temp', {allowEmpty: true, read: false})
   .pipe(clean()));
 
 // gulp.task('clean:dist:feel', ['src:lint']
-gulp.task('clean:dist:feel', () => gulp.src('./dist/feel.js', {read: false})
+gulp.task('clean:dist:feel', () => gulp.src('./dist/feel.js', {allowEmpty: true, read: false})
   .pipe(clean()));
 
 // gulp.task('clean:dist:feel:ast', ['src:lint']
-gulp.task('clean:dist:feel:ast', () => gulp.src('./dist/feel-ast*.js', {read: false})
+gulp.task('clean:dist:feel:ast', () => gulp.src('./dist/feel-ast*.js', {allowEmpty: true, read: false})
   .pipe(clean()));
 
-gulp.task('clean:src:feel', () => gulp.src('./src/feel.pegjs', {read: false})
+gulp.task('clean:src:feel', () => gulp.src('./src/feel.pegjs', {allowEmpty: true, read: false})
   .pipe(clean()));
 
 // gulp.task('generate:parser', ['clean:dist:feel', 'concat:feel']

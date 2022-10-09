@@ -191,3 +191,9 @@ Some valid FEEL expressions (logically categorized):
 For comprehensive set of documentation on DMN, you can refer to :
 
 [DMN Specification Document](http://www.omg.org/spec/DMN/1.1/)
+
+====================================
+
+Generate new dist scripts
+```npx gulp dist```
+

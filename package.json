@@ -29,7 +29,7 @@
   "homepage": "https://github.com/arvind-agarwal/eval-dmn-js#readme",
   "dependencies": {
     "dmn-moddle": "^10.0.0",
-    "js-feel": "^1.4.7",
+    "eval-feel": "file:packages/eval-feel",
     "loglevel": "^1.8.0",
     "moment": "^2.29.4"
   },

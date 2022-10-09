@@ -5,7 +5,7 @@
 const DmnModdle = require('dmn-moddle');
 const logger = require('loglevel').getLogger('eval-dmn-js');
 const moment = require('moment');
-const {feel} = require('js-feel')();
+const {feel} = require('eval-feel')();
 
 function createModdle(additionalPackages, options) {
   return new DmnModdle(additionalPackages, options);

@@ -6,6 +6,8 @@
 */
 const moment = require('moment');
 
+const dateTime = require('./date-time')['date and time'];
+
 const { time_ISO_8601, date_ISO_8601 } = require('../../helper/meta');
 
 const setTimezone = (obj, timezoneId) => obj.tz(timezoneId);
@@ -18,6 +20,6 @@ const formatTime = obj => moment(obj).format(time_ISO_8601);
 
 const format = (obj, fmt) => obj.format(fmt);
 
-const now = () => moment().format();
+const now = () => dateTime(new Date());
 
 module.exports = { setTimezone, formatDateTime, formatDate, formatTime, format, now };

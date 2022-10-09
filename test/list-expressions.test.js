@@ -136,12 +136,19 @@ test('date comparison', async () => {
 
   const rule = 'dt > referenceDate';
   // const rule = 'now()';
-  expect(await evaluateRule(context, 'now()')).toBe(false);
-  expect(await evaluateRule(context, 'dt > referenceDate')).toBe(true);
-  expect(await evaluateRule(context, 'dt >= referenceDate')).toBe(true);
-  expect(await evaluateRule(context, 'dt = referenceDate')).toBe(false);
-  expect(await evaluateRule(context, 'dt < referenceDate')).toBe(false);
-  expect(await evaluateRule(context, 'dt <= referenceDate')).toBe(false);
+  const result = await evaluateRule(context, 'date and time("2017-04-12T12:50:00Z")');
+  expect(result.toISOString()).toBe("2017-04-12T12:50:00.000Z");
+  expect(await evaluateRule(context, 'date and time("2017-04-12T12:50:00Z") < now()')).toBe(true);
+  expect(await evaluateRule(context, 'date and time("2017-04-12T12:50:00Z") > now()')).toBe(false);
+  expect(await evaluateRule(context,'date and time(dt) > date and time(referenceDate)')).toBe(true);
+  expect(await evaluateRule(context,'date(dt) = date(referenceDate)')).toBe(true);
+  expect(await evaluateRule(context,'date and time(dt) in [date and time(referenceDate) .. date and time(referenceDate1)]')).toBe(true);
+
+  // expect(await evaluateRule(context, 'dt > referenceDate')).toBe(true);
+  // expect(await evaluateRule(context, 'dt >= referenceDate')).toBe(true);
+  // expect(await evaluateRule(context, 'dt = referenceDate')).toBe(false);
+  // expect(await evaluateRule(context, 'dt < referenceDate')).toBe(false);
+  // expect(await evaluateRule(context, 'dt <= referenceDate')).toBe(false);
   
 });
 

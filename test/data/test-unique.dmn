@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="definitions_12heylh" name="definitions" namespace="http://camunda.org/schema/1.0/dmn">
+  <decision id="decision" name="Decision">
+    <decisionTable id="decisionTable">
+      <input id="input1" label="Category" camunda:inputVariable="">
+        <inputExpression id="inputExpression1" typeRef="string">
+          <text>input.category</text>
+        </inputExpression>
+      </input>
+      <output id="output1" label="Message" name="message" typeRef="string" />
+      <rule id="row-78874892-7">
+        <inputEntry id="UnaryTests_0ifbg5n">
+          <text>"A"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_04qe1vc">
+          <text>"Message 1"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-78874892-8">
+        <inputEntry id="UnaryTests_0uaae58">
+          <text>"B"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gxrcfo">
+          <text>"Message 2"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-78874892-9">
+        <inputEntry id="UnaryTests_0zuogkd">
+          <text>"A", "C"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0k52ex3">
+          <text>"Message 1"</text>
+        </outputEntry>
+      </rule>
+      <rule id="row-78874892-10">
+        <inputEntry id="UnaryTests_0ap5wzj">
+          <text>not("B")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1j5lgsv">
+          <text>"Message 1"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

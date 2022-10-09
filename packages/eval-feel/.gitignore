@@ -1,0 +1,16 @@
+node_modules
+snippets
+_archive
+dummy.js
+npm-debug.log
+/.vs/feel/v15
+.vscode
+*.njsproj
+*.sln
+package-lock.json
+
+# Coveralls
+coverage
+
+# GitLab
+.gitlab-ci.yml
